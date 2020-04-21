@@ -8,3 +8,11 @@ class Text(BaseModel):
 
 class Data(BaseModel):
     data: List[Text]
+
+
+class Output(Text):
+    sentiment: str
+
+
+class Pred(BaseModel):
+    prediction: List[Output]

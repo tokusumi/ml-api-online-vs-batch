@@ -17,7 +17,7 @@ def save_csv(data, filepath: str, fieldnames=None):
             writer.writerow(f)
 
 
-def load_txt(filepath: str):
+def load_csv(filepath: str):
     with open(filepath, 'r') as f:
         reader = csv.DictReader(f)
         out = list(reader)
@@ -34,7 +34,7 @@ def save_inputs(data: schemas.Data, length=8):
 
 def load_inputs(filename: str):
     filepath = os.path.join(storage, 'inputs', filename)
-    texts = load_txt(filepath=filepath)
+    texts = load_csv(filepath=filepath)
     texts = [schemas.Text(**f) for f in texts]
     return texts
 
@@ -47,7 +47,7 @@ def save_outputs(preds: List[str], filename):
 
 def load_outputs(filename: str):
     filepath = os.path.join(storage, 'outputs', filename)
-    return load_txt(filepath=filepath)
+    return load_csv(filepath=filepath)
 
 
 def check_outputs(filename: str):
